@@ -46,7 +46,8 @@
   <run_depend>roscpp</run_depend>
   <run_depend>rospy</run_depend>
   <run_depend>std_msgs</run_depend>
-
+  <run_depend>cv_bridge</run_depend>
+  <run_depend>opencv2</run_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

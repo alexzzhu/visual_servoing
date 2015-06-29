@@ -1,0 +1,15 @@
+<launch>
+  <!-- ibvseih -->
+  <!--node pkg="visual_servoing" type="ibvs_eih.py" name="ibvs_eih" output="screen" required="true"/-->
+
+<!-- apriltag_detector -->
+  <node pkg="apriltags_ros" type="apriltag_detector_node" name="apriltag_detector_node" required="true" output="screen">
+    <rosparam param="tag_descriptions">[
+      {id: 0, size: 0.08},
+      ]
+    </rosparam>
+    <param name="cam_image_topic" type="string" value="/cameras/right_hand_camera/image" />
+    <param name="cam_info_topic" type="string" value="/cameras/right_hand_camera/camera_info"/>
+  </node>
+
+</launch>
