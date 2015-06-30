@@ -11,4 +11,7 @@ To run this package, you must have the included apriltags_ros package (or a simi
 
 Both functions are used in baxter_wrapper.py.
 
-As of June 29, 2015, both eye in hand (eih) image based visual servoing (ibvs) and eih pose based visual servoing (pbvs) are supported, although there is a bug in the pbvs so that rotation of the arm does not converge properly, and so the arm is only able to match the desired pose, not rotation. 
+As of June 29, 2015, both eye in hand (eih) image based visual servoing (ibvs) and eih pose based visual servoing (pbvs) are supported, although there is a bug in the pbvs so that rotation of the arm does not converge properly, and so the arm is only able to match the desired pose, not rotation.
+
+For more information about the control theory used in this package, please see:
+Chaumette, François, and Seth Hutchinson. "Visual servo control. I. Basic approaches." Robotics & Automation Magazine, IEEE 13.4 (2006): 82-90.
