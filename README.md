@@ -9,4 +9,6 @@ To run this package, you must have the included apriltags_ros package (or a simi
 
 * baxter.get_arm_camera_pose('right') - Gets the transformation between the right hand camera and the robot base, so that a velocity in the camera frame can be applied (as Baxter velocity commands are in base frame). Returns a homogeneous translation vector and rotation matrix. 
 
+Both functions are used in baxter_wrapper.py.
+
 As of June 29, 2015, both eye in hand (eih) image based visual servoing (ibvs) and eih pose based visual servoing (pbvs) are supported, although there is a bug in the pbvs so that rotation of the arm does not converge properly, and so the arm is only able to match the desired pose, not rotation. 
