@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+
 <launch>
   <!-- ibvseih -->
   <node pkg="visual_servoing" type="pbvs_eih.py" name="pbvs_eih" output="screen" required="true"/>
@@ -5,6 +7,7 @@
 <!-- apriltag_detector -->
   <node pkg="apriltags_ros" type="apriltag_detector_node" name="apriltag_detector_node" required="true" output="screen">
     <rosparam param="tag_descriptions">[
+      <!-- Add all tags used, with id and length -->
       {id: 0, size: 0.08},
       ]
     </rosparam>

@@ -1,4 +1,10 @@
 #!/usr/bin/env python
+"""
+Wrapper client class that communicates with the apriltags_ros package to 
+store tag information (images, pose, corners).
+Written by Alex Zhu (alexzhu(at)seas.upenn.edu)
+"""
+
 import roslib
 import numpy as np
 import numpy.matlib
@@ -27,17 +33,17 @@ from geometry_msgs.msg import (
 import struct
 
 class AprilTagClient(object):
+    """
+    Wrapper client class that communicates with the apriltags_ros package to 
+    store tag information (images, pose, corners).
+    """
     def __init__(self, target_marker):
-        # Options
-        self._show_image=False
-        
         self._last_marker=-1
-        self._TARGET_MARKER=target_marker
 
         self.marker_t=None
         self.marker_R=None
         self.corners = None
-        self._image = None
+        self.image = None
 
         self._bridge = CvBridge()
 
@@ -49,9 +55,11 @@ class AprilTagClient(object):
     def __shutdown_hook(self):
         pass
     
-    # Parses an apriltag detection object, and gets the position for the last used marker, or
-    # simply the first one found if the last one was not seen. Returns -1 if nothing found.
     def __get_marker(self,detections):
+        """
+        Parses an apriltag detection message and gets the index for the last used marker, or
+        simply the first one found if the last one was not seen. Returns -1 if nothing found.
+        """
         if (len(detections)==0):
             return None,None
         marker=self.__find_marker(detections,self._last_marker)
@@ -62,23 +70,29 @@ class AprilTagClient(object):
             return detections[0].id,0
 
     def __find_marker(self,detections,marker_num):
+        """
+        Finds index of marker #marker_num in the apriltag detection message detections. If not found,
+        returns -1.
+        """
         for i in range(0,len(detections)):
-            # If marker found
             if detections[i].id==marker_num:
                 return i
         return -1
     
-    # Dummy function to save incoming images
     def __get_image(self,image):
-        #print "Image received!"
+        """
+        # Dummy function to save incoming images
+        """
         try:
             cv_image=self._bridge.imgmsg_to_cv2(image,"bgr8")
-            self._image=cv_image
+            self.image=cv_image
         except CvBridgeError, e:
             print e
 
-    # Tag detection may have come in
     def __process_detection(self,apriltag_detections):
+        """
+        Process income apriltag detections message, store pose and corners if detections were found.
+        """        
         if rospy.is_shutdown():
             return
         
