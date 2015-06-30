@@ -40,7 +40,7 @@ class VisualServoing(object):
     def __init__(self, ibvs,marker_size=None):
         if marker_size is not None:
             self._corner_pose = np.array([[0,0,0],[1,0,0],[1,1,0],[0,1,0]])*marker_size
-        self._translation_only=False
+        self._translation_only=True
         # Set to true to set all output velocities to test_vel (arm moves according to test_vel).
         self._test_servoing=False
         self._test_vel = np.array([[0.1],[0],[0],[0],[0],[0]])
