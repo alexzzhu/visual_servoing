@@ -55,7 +55,7 @@ class VisualServoing(object):
 
         self._target_set=False
         
-    def set_target(self,ideal_cam_pose, ideal_cam_rot):
+    def set_target(self,ideal_cam_pose=None, ideal_cam_rot=None,ideal_corners=None):
         """
         Sets the target position for the visual servoing law. The pose inputs are in homogeneous coordinates.
         While the corner positions aren't necessary for pbvs, they are still used to draw the desired position
