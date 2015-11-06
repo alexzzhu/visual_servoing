@@ -30,7 +30,7 @@ from geometry_msgs.msg import (
     Quaternion,
 )
 
-class PbvsEih(object)
+class PbvsEih(object):
     """
     Performs eye in hand (eih) image based visual servoing (ibvs). 
     """
@@ -51,7 +51,7 @@ class PbvsEih(object)
         Runs one instance of the visual servoing control law. Call in a loop.
         """
         key = -1
-        image = self._apriltag_client._image
+        image = self._apriltag_client.image
         if image is None:
             return
         # Draw the ideal position if selected

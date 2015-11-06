@@ -11,8 +11,7 @@
       {id: 0, size: 0.08},
       ]
     </rosparam>
-    <param name="cam_image_topic" type="string" value="/cameras/right_hand_camera/image" />
-    <param name="cam_info_topic" type="string" value="/cameras/right_hand_camera/camera_info"/>
+    <remap from="image_rect" to="/cameras/right_hand_camera/image"/>
   </node>
 
 </launch>

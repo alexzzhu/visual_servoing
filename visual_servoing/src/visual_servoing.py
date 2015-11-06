@@ -38,7 +38,7 @@ class VisualServoing(object):
     the camera (eye) to the hand to the velocity twist vector.
     """
     def __init__(self, ibvs):
-        self._translation_only=True
+        self._translation_only=False
         # Set to true to set all output velocities to test_vel (arm moves according to test_vel).
         self._test_servoing=False
         self._test_vel = np.array([[0.1],[0],[0],[0],[0],[0]])
@@ -107,7 +107,7 @@ class VisualServoing(object):
         """
         Used for pbvs only. Computes the feature vector given an input pose.
         """
-        R_rotated=np.dot((self._ideal_cam_rot),R.T)
+        R_rotated=np.dot(R.T,(self._ideal_cam_rot))
         (theta,u,p)=rotation_from_matrix(R_rotated)
         if self._translation_only:
             feature=np.concatenate((t[0:3,0],np.zeros((3,1))),axis=0)
