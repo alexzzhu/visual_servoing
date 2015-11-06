@@ -37,9 +37,7 @@ class VisualServoing(object):
     although eye to hand (eth) methods are easily applied by applying the transformation from 
     the camera (eye) to the hand to the velocity twist vector.
     """
-    def __init__(self, ibvs,marker_size=None):
-        if marker_size is not None:
-            self._corner_pose = np.array([[0,0,0],[1,0,0],[1,1,0],[0,1,0]])*marker_size
+    def __init__(self, ibvs):
         self._translation_only=True
         # Set to true to set all output velocities to test_vel (arm moves according to test_vel).
         self._test_servoing=False
@@ -88,8 +86,6 @@ class VisualServoing(object):
             self._ideal_feature[i*2,0]=x
             self._ideal_feature[i*2+1,0]=y
             p = self._ideal_cam_pose
-            X=p[0]
-            Y=p[1]
             Z=p[2]
             self._L[i*2:i*2+2,:]=np.matrix([[-1/Z,0,x/Z,x*y,-(1+x*x),y],[0,-1/Z,y/Z,1+y*y,-x*y,-x]])
 
